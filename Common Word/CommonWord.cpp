@@ -1,3 +1,8 @@
+/**
+ * Author: Niall Mc Guinness
+ */
+
+
 #include <iostream>
 #include <fstream>
 #include <map>
@@ -16,36 +21,41 @@ struct val_lessthan : binary_function <pair<string,int>, pair<string,int>, bool>
 
 void count_words(string filename) {
 
-	map<string, int> word_count;
+	map<string, int> word_map;
+	int max_count = 0;
+	string most_common_word;
+	string word;
+
+	//Open file for reading
 
 	ifstream in(filename.c_str());
 
+	//Check if the file has been found and loaded properly
 	if(!in) {
 		cout << "File not found." << endl;
 		return;
 	}
 
-	string word;
+	//Loop through the file and map each new word to each occurrence
 	while(in >> word) {
-		++word_count[word];
+		word_map[word]++;
 	}
 
-	// do a simple loop through map to find the max:
-	int max_count = 0;
-	string most_common_word;
+	// Loop through map to find the max
 
-	for(auto &e : word_count) {
+	for(auto &e : word_map) {
 		if(e.second > max_count) {
 			max_count = e.second;
 			most_common_word = e.first;
 		}
 	}
-	cout << "most common word: " << most_common_word << " " << max_count << endl;
+	cout << "Most common word: " << most_common_word << " " << max_count << endl;
 }
 
-int main(int argc, char **argv) {
+int main() {
 
-	count_words("lotr.txt");
+
+	//count_words("lotr.txt");
 	count_words("file.txt");
 
 	return 0;
