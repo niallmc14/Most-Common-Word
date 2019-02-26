@@ -1,0 +1,1 @@
+CommonWord.o: ../CommonWord.cpp
