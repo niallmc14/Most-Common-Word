@@ -11,13 +11,6 @@
 
 using namespace std;
 
-struct val_lessthan : binary_function <pair<string,int>, pair<string,int>, bool>
-{
-  bool operator()(const pair<string,int>& x, const pair<string,int>& y) const{
-	  return x.second < y.second;
-  }
-}val_lt;
-
 
 void count_words(string filename) {
 
